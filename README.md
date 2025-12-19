@@ -1,61 +1,178 @@
-# 🚀 Getting started with Strapi
+# 🚀 InnovateX CMS - Blog Engine
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+A powerful headless CMS built with Strapi v5, branded and customized for InnovateX. Perfect for managing blog content with a modern admin interface, RESTful API, and flexible content architecture.
 
-### `develop`
+## Features
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+- 📝 **Blog Management** - Create, edit, and publish articles
+- 👥 **Author Management** - Manage multiple authors and contributors
+- 🏷️ **Categories** - Organize content with tagging system
+- 🖼️ **Media Management** - Upload and manage images and files
+- 🎨 **InnovateX Theme** - Custom green & teal color scheme with smokey white backgrounds
+- 🔐 **Role-based Access** - Admin permissions and user management
+- ⚡ **Real-time API** - RESTful API for frontend consumption
+- 💾 **Database** - SQLite (local), PostgreSQL (production/cloud)
 
-```
+## Quick Start
+
+### Prerequisites
+- Node.js (v18.0.0 - v22.x.x)
+- npm (v6.0.0+)
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run develop
-# or
-yarn develop
 ```
 
-### `start`
+The admin panel will be available at `http://localhost:1337/admin`
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+## Available Commands
 
+### Development
+```bash
+npm run develop
 ```
+Runs the CMS with hot-reload enabled. Perfect for development work.
+
+### Production
+```bash
 npm run start
-# or
-yarn start
 ```
+Runs the CMS in production mode without auto-reload.
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
+### Build
+```bash
 npm run build
-# or
-yarn build
+```
+Compiles the admin panel for production deployment.
+
+### Seed Data (Optional)
+```bash
+npm run seed:example
+```
+Loads example data into the database.
+
+## Project Structure
+
+```
+src/
+├── admin/           # Admin panel customization
+├── api/             # Content types (Article, Author, Category, etc.)
+├── components/      # Reusable content components
+└── bootstrap.js     # App initialization
+
+config/
+├── database.js      # Database configuration
+├── server.js        # Server settings
+└── admin.js         # Admin panel settings
+
+public/
+└── uploads/         # Media files storage
+
+data/
+└── data.json        # Seed data
 ```
 
-## ⚙️ Deployment
+## Content Types
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+### Article
+- Title, Description, Slug
+- Cover Image
+- Author (relation)
+- Category (relation)
+- Dynamic Blocks (rich text, media, quotes, sliders)
 
+### Author
+- Name, Email
+- Avatar
+- Articles (one-to-many)
+
+### Category
+- Name, Slug
+- Articles (one-to-many)
+
+## Database
+
+**Local Development:** SQLite (`.tmp/data.db`)
+**Production/Cloud:** PostgreSQL
+
+To switch to PostgreSQL locally:
+```bash
+# Install PostgreSQL driver
+npm install pg
+
+# Update .env
+DATABASE_CLIENT=postgres
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_NAME=strapi
+DATABASE_USERNAME=postgres
+DATABASE_PASSWORD=yourpassword
 ```
-yarn strapi deploy
+
+## API Endpoints
+
+### Get All Articles
+```
+GET /api/articles?populate=*
 ```
 
-## 📚 Learn more
+### Get Article by ID
+```
+GET /api/articles/1?populate=*
+```
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+### Get Article by Slug
+```
+GET /api/articles?filters[slug][$eq]=article-slug&populate=*
+```
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+See `API_STRUCTURE.md` for complete endpoint documentation.
 
-## ✨ Community
+## Deployment
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+### Deploy to Strapi Cloud
+```bash
+npm run deploy
+```
+
+This automatically:
+- Provisions a PostgreSQL database
+- Sets up hosting
+- Configures environment variables
+- Deploys your CMS
+
+### Self-Hosted Deployment
+Deploy the built files to any Node.js hosting:
+```bash
+npm run build
+# Deploy the 'build' folder to your server
+npm run start
+```
+
+## Branding
+
+The InnovateX theme is customized in `src/admin/app.js`:
+- **Colors:** Green (#10b981), Teal (#14b8a6), Smokey White (#f7f8f9)
+- **Title:** "SYL Admin"
+- **Logo:** Custom favicon and branding
+
+## Media Storage
+
+- **Local:** Files stored in `public/uploads/`
+- **Cloud:** Automatically managed by Strapi Cloud
+
+## Support & Development
+
+For development questions, check the Strapi documentation or review the project's API structure in `API_STRUCTURE.md`.
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+**Version:** 1.0.0  
+**Built with:** Strapi v5 + InnovateX Branding
+
