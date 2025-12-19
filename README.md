@@ -167,5 +167,3 @@ For development questions, check the Strapi documentation or review the project'
 ---
 
 **Version:** 1.0.0  
-**Built with:** Strapi v5 + InnovateX Branding
-
