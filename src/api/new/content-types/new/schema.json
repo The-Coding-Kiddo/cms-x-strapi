@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news",
+  "info": {
+    "singularName": "new",
+    "pluralName": "news",
+    "displayName": "news"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Text": {
+      "type": "string",
+      "required": true
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Article",
+        "News",
+        "Paper",
+        "Press Release",
+        "Recommendation"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Text"
+    },
+    "excerpt": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Author": {
+      "type": "string"
+    }
+  }
+}
