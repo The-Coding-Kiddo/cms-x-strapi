@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "newsletters",
+  "info": {
+    "singularName": "newsletter",
+    "pluralName": "newsletters",
+    "displayName": "newsletter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "newsletter": {
+      "type": "component",
+      "component": "homepage.newsletter",
+      "repeatable": false
+    }
+  }
+}

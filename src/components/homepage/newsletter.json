@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_homepage_newsletters",
+  "info": {
+    "displayName": "newsletter",
+    "icon": "paperPlane"
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "confirmed": {
+      "type": "boolean",
+      "required": false,
+      "default": true
+    },
+    "Description": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

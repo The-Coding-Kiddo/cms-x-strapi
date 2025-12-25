@@ -11,6 +11,19 @@ export interface HomepageHero extends Struct.ComponentSchema {
   };
 }
 
+export interface HomepageNewsletter extends Struct.ComponentSchema {
+  collectionName: 'components_homepage_newsletters';
+  info: {
+    displayName: 'newsletter';
+    icon: 'paperPlane';
+  };
+  attributes: {
+    confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    Description: Schema.Attribute.Blocks;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -77,6 +90,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'homepage.hero': HomepageHero;
+      'homepage.newsletter': HomepageNewsletter;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

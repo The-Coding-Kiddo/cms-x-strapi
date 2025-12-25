@@ -658,6 +658,67 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNewsletterSubscriberNewsletterSubscriber
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'newsletter_subscribers';
+  info: {
+    displayName: 'Newsletter Subscriber';
+    pluralName: 'newsletter-subscribers';
+    singularName: 'newsletter-subscriber';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::newsletter-subscriber.newsletter-subscriber'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    source: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNewsletterNewsletter extends Struct.SingleTypeSchema {
+  collectionName: 'newsletters';
+  info: {
+    displayName: 'newsletter';
+    pluralName: 'newsletters';
+    singularName: 'newsletter';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::newsletter.newsletter'
+    > &
+      Schema.Attribute.Private;
+    newsletter: Schema.Attribute.Component<'homepage.newsletter', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1175,6 +1236,8 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::new.new': ApiNewNew;
+      'api::newsletter-subscriber.newsletter-subscriber': ApiNewsletterSubscriberNewsletterSubscriber;
+      'api::newsletter.newsletter': ApiNewsletterNewsletter;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

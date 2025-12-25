@@ -128,4 +128,10 @@ exports
 dist
 build
 .strapi-updater.json
-.strapi-cloud.json
+.strapi-cloud.jsonfavicon.png
+public/favicon.ico
+public/favicon.png
+src/admin/extensions/favicon.png
+.tmp/
+dist/
+build/
