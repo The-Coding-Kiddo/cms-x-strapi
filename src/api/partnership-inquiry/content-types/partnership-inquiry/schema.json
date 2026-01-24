@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partnership_inquiries",
+  "info": {
+    "singularName": "partnership-inquiry",
+    "pluralName": "partnership-inquiries",
+    "displayName": "partnership inquiry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contactName": {
+      "type": "string",
+      "required": true
+    },
+    "organizationName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "location": {
+      "type": "string",
+      "required": false
+    },
+    "partnershipGoals": {
+      "type": "text",
+      "required": false
+    },
+    "additionalNotes": {
+      "type": "text",
+      "required": false
+    }
+  }
+}
